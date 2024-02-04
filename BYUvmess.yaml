@@ -1,0 +1,663 @@
+# Configby YT JAVA ROAM-------------
+
+#--------------------------------------
+port: 7890
+socks-port: 7891
+# redir-port: 7892
+allow-lan: true
+# 仅适用于设置 allow-lan 为 true 时
+# "*": 绑定所有 IP 地址
+#192.168.122.11: 绑定单个 IPv4 地址
+# "[aaaa::a8aa:ff:fe09:57d8]": 绑定单个 IPv6 地址
+# bind-address: "*"
+
+mode: Rule
+log-level: info
+external-controller: 127.0.0.1:9090
+experimental:
+  ignore-resolve-fail: true 
+hosts:
+  'mtalk.google.com': 108.177.125.188
+#   '*.clash.dev': 127.0.0.1
+#   'alpha.clash.dev': '::1'
+
+#🔴_____________________________________proxies______________________________________🔴
+#🔴
+proxies:
+- name: tambah
+  type: vmess
+  server: 104.19.143.108
+  port: 80
+  uuid: 4e23bd4f-cc11-4ade-fbc1-fcaf245662bf
+  alterId: 0
+  cipher: auto
+  udp: true
+  xudp: false
+  global-padding: false
+  authenticated-length: false
+  skip-cert-verify: true
+  tls: false
+  servername: lmnyvpn.catnipballs.gay
+  network: ws
+  ws-opts:
+    path: "/"
+    headers:
+      Host: lmnyvpn.catnipballs.gay
+- name: baru
+  type: vmess
+  server: 104.19.143.108
+  port: 80
+  uuid: 7022982f-da4c-48c9-c660-b2315abdcf7e
+  alterId: 0
+  cipher: auto
+  udp: true
+  xudp: false
+  global-padding: false
+  authenticated-length: false
+  skip-cert-verify: true
+  tls: false
+  servername: my1.tooters.ir
+  network: ws
+  ws-opts:
+    path: "/"
+    headers:
+      Host: my1.tooters.ir
+- name: oracle
+  type: vmess
+  server: 104.19.143.108
+  port: 80
+  uuid: 113a74cc-f13b-48ec-bbb2-2bbab77a2f35
+  alterId: 0
+  cipher: auto
+  udp: true
+  xudp: false
+  global-padding: false
+  authenticated-length: false
+  skip-cert-verify: true
+  tls: false
+  servername: kr1.ljyyds.top
+  network: ws
+  ws-opts:
+    path: "/"
+    headers:
+      Host: kr1.ljyyds.top
+- name: akamai
+  type: vmess
+  server: 104.19.143.108
+  port: 80
+  uuid: 2a8a10fb-9ca3-367e-a234-cf09f841be4f
+  alterId: 0
+  cipher: auto
+  udp: true
+  xudp: false
+  global-padding: false
+  authenticated-length: false
+  skip-cert-verify: true
+  tls: false
+  servername: de1e-haha.v2freevpn.com
+  network: ws
+  ws-opts:
+    path: "/v1893298323Py"
+    headers:
+      Host: de1e-haha.v2freevpn.com
+- name: dapat
+  type: vmess
+  server: 104.19.143.108
+  port: 80
+  uuid: e778fdab-34ca-4ba2-a51f-f757d8ae1aa9
+  alterId: 0
+  cipher: auto
+  udp: true
+  xudp: false
+  global-padding: false
+  authenticated-length: false
+  skip-cert-verify: true
+  tls: false
+  servername: vless.adioranye.workers.dev
+  network: ws
+  ws-opts:
+    path: "/ovh.kmoljklj.top:443/0TxtG?ed=2048"
+    headers:
+      Host: vless.adioranye.workers.dev
+- name: indoBI_vmess_ws_tls
+  type: vmess
+  server: 104.19.143.108
+  port: 80
+  uuid: cdfb69aa-f525-42a1-aba7-023936dfb718
+  alterId: 0
+  cipher: auto
+  udp: true
+  xudp: false
+  global-padding: false
+  authenticated-length: false
+  skip-cert-verify: true
+  tls: false
+  servername: sg01.ipv2ray.xyz
+  network: ws
+  ws-opts:
+    path: "/vmess-ws"
+    headers:
+      Host: sg01.ipv2ray.xyz
+- name: Biz
+  type: vmess
+  server: 104.19.143.108
+  port: 80
+  uuid: 5db44520-be6c-11ee-9938-1577c1651679
+  alterId: 0
+  cipher: auto
+  udp: true
+  xudp: false
+  global-padding: false
+  authenticated-length: false
+  skip-cert-verify: true
+  tls: false
+  servername: cbtp.xmbb.net
+  network: ws
+  ws-opts:
+    path: "/worryfree"
+    headers:
+      Host: cbtp.xmbb.net
+
+#🔴
+#🔴_____________________________________proxies______________________________________🔴
+#
+#🟡_________________________________PROXY-GROUP__________________________________🟡
+proxy-groups:
+# Global kita gunakan untuk koneksi UMUM
+- name: "Global✅"
+  type: select
+  disable-udp: false
+  proxies:
+  - tambah
+  - baru
+  - oracle
+  - akamai
+  - dapat
+  - indoBI_vmess_ws_tls
+  - Biz
+#⬜⬜
+#Koneksi Sosmed
+- name: "SOSMED"
+  type: load-balance
+  strategy: consistent-hashing
+  disable-udp: false
+  proxies:
+  - tambah
+  - baru
+  - oracle
+  - akamai
+  - dapat
+  - indoBI_vmess_ws_tls
+  - Biz
+  url: http://www.gstatic.com/generate_204
+  interval: '300'
+  tolerance: '150'
+#⬜⬜
+#koneksi nonton video yt dll,
+- name: "STREAMING"
+  type: fallback
+  disable-udp: false
+  proxies:
+  - tambah
+  - baru
+  - oracle
+  - akamai
+  - dapat
+  - indoBI_vmess_ws_tls
+  - Biz
+  url: http://www.gstatic.com/generate_204
+  interval: '300'
+ #⬜⬜
+#🟡_________________________________PROCY-GROUP__________________________________🟡
+# Clash for Windows
+cfw-bypass:
+  - qq.com
+  - music.163.com
+  - '*.music.126.net'
+  - localhost
+  - 127.*
+  - 10.*
+  - 172.16.*
+  - 172.17.*
+  - 172.18.*
+  - 172.19.*
+  - 172.20.*
+  - 172.21.*
+  - 172.22.*
+  - 172.23.*
+  - 172.24.*
+  - 172.25.*
+  - 172.26.*
+  - 172.27.*
+  - 172.28.*
+  - 172.29.*
+  - 172.30.*
+  - 172.31.*
+  - 192.168.*
+  - <local>
+cfw-latency-timeout: 5000
+
+rules:
+# >BISA DI ISI SUBDOMAIN,IP-CIDR ATAU PORT GAME 
+# Instagram	
+- DOMAIN-SUFFIX,cdninstagram.com,SOSMED
+- DOMAIN-SUFFIX,instagram.com,SOSMED
+# Whatsapp	
+- DOMAIN-SUFFIX,m.me,SOSMED
+- DOMAIN-SUFFIX,oculus.com,SOSMED
+- DOMAIN-SUFFIX,oculuscdn.com,SOSMED
+- DOMAIN-SUFFIX,rocksdb.org,SOSMED
+- DOMAIN-SUFFIX,whatsapp.com,SOSMED
+- DOMAIN-SUFFIX,whatsapp.net,SOSMED
+- DST-PORT,3478,SOSMED
+- DST-PORT,4244,SOSMED
+- DST-PORT,5222,SOSMED
+- DST-PORT,5223,SOSMED
+- DST-PORT,5228,SOSMED
+- DST-PORT,5288,SOSMED
+- DST-PORT,5242,SOSMED
+- DST-PORT,5349,SOSMED
+- DST-PORT,34784,SOSMED
+- DST-PORT,45395,SOSMED
+- DST-PORT,50318,SOSMED
+- DST-PORT,59234,SOSMED
+# Facebook	
+- DOMAIN-SUFFIX,messenger.com,SOSMED
+- DOMAIN-SUFFIX,facebook.com,SOSMED
+- DOMAIN-SUFFIX,facebook.net,SOSMED
+- DOMAIN-SUFFIX,fb.com,SOSMED
+- DOMAIN-SUFFIX,fb.me,SOSMED
+- DOMAIN-SUFFIX,fbaddins.com,SOSMED
+- DOMAIN-SUFFIX,fbcdn.net,SOSMED
+- DOMAIN-SUFFIX,fbsbx.com,SOSMED
+- DOMAIN-SUFFIX,fbworkmail.com,SOSMED
+- DOMAIN-KEYWORD,.facebook.,SOSMED
+- DOMAIN-SUFFIX,facebookmail.com,SOSMED
+- IP-CIDR,157.240.0.0/16,SOSMED
+- IP-CIDR,103.4.96.0/22,SOSMED
+- IP-CIDR,129.134.0.0/17,SOSMED
+- IP-CIDR,157.240.0.0/17,SOSMED
+- IP-CIDR,173.252.64.0/19,SOSMED
+- IP-CIDR,173.252.96.0/19,SOSMED
+- IP-CIDR,179.60.192.0/22,SOSMED
+- IP-CIDR,185.60.216.0/22,SOSMED
+- IP-CIDR,204.15.20.0/22,SOSMED
+- IP-CIDR,31.13.24.0/21,SOSMED
+- IP-CIDR,31.13.64.0/18,SOSMED
+- IP-CIDR,45.64.40.0/22,SOSMED
+- IP-CIDR,66.220.144.0/20,SOSMED
+- IP-CIDR,69.171.224.0/19,SOSMED
+- IP-CIDR,69.63.176.0/20,SOSMED
+- IP-CIDR,74.119.76.0/22,SOSMED
+# Line	
+- DOMAIN-SUFFIX,lin.ee,SOSMED
+- DOMAIN-SUFFIX,line.me,SOSMED
+- DOMAIN-SUFFIX,line.naver.jp,SOSMED
+- DOMAIN-SUFFIX,line-apps.com,SOSMED
+- DOMAIN-SUFFIX,line-cdn.net,SOSMED
+- DOMAIN-SUFFIX,line-scdn.net,SOSMED
+- DOMAIN-SUFFIX,nhncorp.jp,SOSMED
+- DOMAIN-SUFFIX,naver.jp,SOSMED
+- IP-CIDR,103.2.28.0/22,SOSMED
+- IP-CIDR,119.235.224.0/21,SOSMED
+- IP-CIDR,119.235.232.0/23,SOSMED
+- IP-CIDR,119.235.235.0/24,SOSMED
+- IP-CIDR,119.235.236.0/23,SOSMED
+- IP-CIDR,125.6.146.0/24,SOSMED
+- IP-CIDR,125.6.149.0/24,SOSMED
+- IP-CIDR,125.6.190.0/24,SOSMED
+- IP-CIDR,125.209.208.0/20,SOSMED
+- IP-CIDR,203.104.103.0/24,SOSMED
+- IP-CIDR,203.104.128.0/20,SOSMED
+- IP-CIDR,203.174.66.64/26,SOSMED
+- IP-CIDR,203.174.77.0/24,SOSMED
+- IP-CIDR,103.2.30.0/23,SOSMED
+- IP-CIDR,125.209.208.0/20,SOSMED
+- IP-CIDR,147.92.128.0/17,SOSMED
+- IP-CIDR,203.104.144.0/21,SOSMED
+# Telegram	
+- DOMAIN-SUFFIX,telegra.ph,SOSMED
+- DOMAIN-SUFFIX,telegram.org,SOSMED
+- DOMAIN-SUFFIX,t.me,SOSMED
+- DOMAIN-SUFFIX,tdesktop.com,SOSMED
+- DOMAIN-SUFFIX,telegram.me,SOSMED
+- DOMAIN-SUFFIX,telesco.pe,SOSMED
+- IP-CIDR,91.108.4.0/22,SOSMED
+- IP-CIDR,91.108.8.0/22,SOSMED
+- IP-CIDR,91.108.12.0/22,SOSMED
+- IP-CIDR,91.108.16.0/22,SOSMED
+- IP-CIDR,91.108.20.0/22,SOSMED
+- IP-CIDR,91.108.56.0/22,SOSMED
+- IP-CIDR,149.154.160.0/20,SOSMED
+# Twitter	
+- DOMAIN-SUFFIX,pscp.tv,SOSMED
+- DOMAIN-SUFFIX,periscope.tv,SOSMED
+- DOMAIN-SUFFIX,t.co,SOSMED
+- DOMAIN-SUFFIX,twimg.co,SOSMED
+- DOMAIN-SUFFIX,twimg.com,SOSMED
+- DOMAIN-SUFFIX,twitpic.com,SOSMED
+- DOMAIN-SUFFIX,twitter.com,SOSMED
+- DOMAIN-SUFFIX,vine.co,SOSMED
+- DOMAIN-KEYWORD,twitter,SOSMED
+- DOMAIN-SUFFIX,twttr.net,SOSMED
+- DOMAIN-SUFFIX,twttr.com,SOSMED
+- DOMAIN-SUFFIX,twitter.jp,SOSMED
+# Spotify	
+- DOMAIN-SUFFIX,open.spotify.com,SOSMED
+- DOMAIN-SUFFIX,audio-ak-spotify-com.akamaized.net,SOSMED
+- DOMAIN-SUFFIX,byspotify.com,SOSMED
+- DOMAIN-SUFFIX,heads4-ak-spotify-com.akamaized.net,SOSMED
+- DOMAIN-SUFFIX,pscdn.co,SOSMED
+- DOMAIN-SUFFIX,scdn.co,SOSMED
+- DOMAIN-SUFFIX,spoti.fi,SOSMED
+- DOMAIN-SUFFIX,spotify-com.akamaized.net,SOSMED
+- DOMAIN-SUFFIX,spotify-everywhere.com,SOSMED
+- DOMAIN-SUFFIX,spotify.com,SOSMED
+- DOMAIN-SUFFIX,spotify.design,SOSMED
+- DOMAIN-SUFFIX,spotifycdn.com,SOSMED
+- DOMAIN-SUFFIX,spotifycdn.net,SOSMED
+- DOMAIN-SUFFIX,spotifycharts.com,SOSMED
+- DOMAIN-SUFFIX,spotifycodes.com,SOSMED
+- DOMAIN-SUFFIX,spotifyforbrands.com,SOSMED
+- DOMAIN-SUFFIX,spotifyjobs.com,SOSMED
+- DOMAIN-KEYWORD,-spotify-com,SOSMED
+- DOMAIN-KEYWORD,spotify.com,SOSMED
+# Deezer	
+- DOMAIN-SUFFIX,deezer.com,SOSMED
+- DOMAIN-SUFFIX,dzcdn.net,SOSMED
+# JOOX	
+- DOMAIN-SUFFIX,joox.com,SOSMED
+- DOMAIN-KEYWORD,jooxweb-api,SOSMED
+
+# > Youtube
+- DOMAIN-SUFFIX,googlevideo.com,STREAMING
+- DOMAIN-SUFFIX,video.google.com,STREAMING
+- DOMAIN-SUFFIX,youtu.be,STREAMING
+- DOMAIN-SUFFIX,youtube-nocookie.com,STREAMING
+- DOMAIN-SUFFIX,youtube-ui.l.google.com,STREAMING
+- DOMAIN-SUFFIX,youtube.com,STREAMING
+- DOMAIN-SUFFIX,youtube.googleapis.com,STREAMING
+- DOMAIN-SUFFIX,youtubeeducation.com,STREAMING
+- DOMAIN-SUFFIX,youtubeembeddedplayer.googleapis.com,STREAMING
+- DOMAIN-SUFFIX,youtubei.googleapis.com,STREAMING
+- DOMAIN-SUFFIX,youtubekids.com,STREAMING
+- DOMAIN-SUFFIX,yt.be,STREAMING
+- DOMAIN-SUFFIX,yt3.ggpht.com,STREAMING
+- DOMAIN-SUFFIX,ytimg.com,STREAMING
+- DOMAIN-SUFFIX,googleapis.com,STREAMING
+- DOMAIN-SUFFIX,gstatic.com,STREAMING
+- DOMAIN-SUFFIX,google.com,STREAMING
+- DOMAIN-SUFFIX,googleusercontent.com,STREAMING
+- DOMAIN-SUFFIX,gvt1.com,STREAMING
+- IP-CIDR,74.125.24.188/16,STREAMING
+- IP-CIDR,172.217.194.188/16,STREAMING
+- IP-CIDR,142.250.4.188/16,STREAMING
+
+  #####_ADS BLOCK_#####
+- DOMAIN-SUFFIX,heytapmobile.com,REJECT
+- DOMAIN-SUFFIX,newrelic.com,REJECT
+- DOMAIN-SUFFIX,trafficfactory.biz,REJECT
+  # > Google Ads,REJECT
+- DOMAIN-SUFFIX,pagead2.googlesyndication.com,REJECT
+- DOMAIN-SUFFIX,ads.google.com,REJECT
+- DOMAIN-SUFFIX,adservice.google.com,REJECT
+- DOMAIN-SUFFIX,pagead2.googleadservices.com,REJECT
+- DOMAIN-SUFFIX,googleadservices.com,REJECT
+- DOMAIN-SUFFIX,static.doubleclick.net,REJECT
+  # > Media.net,REJECT
+- DOMAIN-SUFFIX,media.net,REJECT
+  # > Doubleclick.net,REJECT
+- DOMAIN-SUFFIX,doubleclick.net,REJECT
+  # > FastClick,REJECT
+- DOMAIN-SUFFIX,fastclick.com,REJECT
+- DOMAIN-SUFFIX,fastclick.net,REJECT
+  # > Amazon,REJECT
+- DOMAIN-SUFFIX,adtago.s3.amazonaws.com,REJECT
+- DOMAIN-SUFFIX,analyticsengine.s3.amazonaws.com,REJECT
+- DOMAIN-SUFFIX,advice-ads.s3.amazonaws.com,REJECT
+- DOMAIN-SUFFIX,affiliationjs.s3.amazonaws.com,REJECT
+- DOMAIN-SUFFIX,advertising-api-eu.amazon.com,REJECT
+- DOMAIN-SUFFIX,amazonaax.com,REJECT
+- DOMAIN-SUFFIX,amazonclix.com,REJECT
+- DOMAIN-SUFFIX,assoc-amazon.com,REJECT
+  # >   # > Analytics ====================,REJECT
+  # > Yahoo,REJECT
+- DOMAIN-SUFFIX,ads.yahoo.com,REJECT
+- DOMAIN-SUFFIX,adserver.yahoo.com,REJECT
+- DOMAIN-SUFFIX,adspecs.yahoo.com,REJECT
+- DOMAIN-SUFFIX,advertising.yahoo.com,REJECT
+- DOMAIN-SUFFIX,analytics.yahoo.com,REJECT
+- DOMAIN-SUFFIX,comet.yahoo.com,REJECT
+- DOMAIN-SUFFIX,log.fc.yahoo.com,REJECT
+- DOMAIN-SUFFIX,ganon.yahoo.com,REJECT
+- DOMAIN-SUFFIX,gemini.yahoo.com,REJECT
+- DOMAIN-SUFFIX,geo.yahoo.com,REJECT
+- DOMAIN-SUFFIX,marketingsolutions.yahoo.com,REJECT
+- DOMAIN-SUFFIX,pclick.yahoo.com,REJECT
+- DOMAIN-SUFFIX,analytics.query.yahoo.com,REJECT
+- DOMAIN-SUFFIX,geo.query.yahoo.com,REJECT
+- DOMAIN-SUFFIX,onepush.query.yahoo.com,REJECT
+- DOMAIN-SUFFIX,bats.video.yahoo.com,REJECT
+- DOMAIN-SUFFIX,visit.webhosting.yahoo.com,REJECT
+- DOMAIN-SUFFIX,ads.yap.yahoo.com,REJECT
+- DOMAIN-SUFFIX,m.yap.yahoo.com,REJECT
+- DOMAIN-SUFFIX,partnerads.ysm.yahoo.com,REJECT
+  # > Yandex,REJECT
+- DOMAIN-SUFFIX,appmetrica.yandex.com,REJECT
+- DOMAIN-SUFFIX,report.appmetrica.yandex.net,REJECT
+- DOMAIN-SUFFIX,extmaps-api.yandex.net,REJECT
+- DOMAIN-SUFFIX,analytics.mobile.yandex.net,REJECT
+- DOMAIN-SUFFIX,banners.mobile.yandex.net,REJECT
+- DOMAIN-SUFFIX,banners-slb.mobile.yandex.net,REJECT
+- DOMAIN-SUFFIX,startup.mobile.yandex.net,REJECT
+- DOMAIN-SUFFIX,offerwall.yandex.net,REJECT
+- DOMAIN-SUFFIX,adfox.yandex.ru,REJECT
+- DOMAIN-SUFFIX,adsdk.yandex.ru,REJECT
+- DOMAIN-SUFFIX,an.yandex.ru,REJECT
+- DOMAIN-SUFFIX,redirect.appmetrica.yandex.ru,REJECT
+- DOMAIN-SUFFIX,awaps.yandex.ru,REJECT
+- DOMAIN-SUFFIX,awsync.yandex.ru,REJECT
+- DOMAIN-SUFFIX,bs.yandex.ru,REJECT
+- DOMAIN-SUFFIX,bs-meta.yandex.ru,REJECT
+- DOMAIN-SUFFIX,clck.yandex.ru,REJECT
+- DOMAIN-SUFFIX,informer.yandex.ru,REJECT
+- DOMAIN-SUFFIX,kiks.yandex.ru,REJECT
+- DOMAIN-SUFFIX,grade.market.yandex.ru,REJECT
+- DOMAIN-SUFFIX,mc.yandex.ru,REJECT
+- DOMAIN-SUFFIX,metrika.yandex.ru,REJECT
+- DOMAIN-SUFFIX,click.sender.yandex.ru,REJECT
+- DOMAIN-SUFFIX,share.yandex.ru,REJECT
+- DOMAIN-SUFFIX,yandexadexchange.net,REJECT
+  # > Google Analytics,REJECT
+- DOMAIN-SUFFIX,google-analytics.com,REJECT
+  # > Hotjar,REJECT
+- DOMAIN-SUFFIX,api-hotjar.com,REJECT
+- DOMAIN-SUFFIX,hotjar-analytics.com,REJECT
+- DOMAIN-SUFFIX,hotjar.com,REJECT
+  # > MouseFlow,REJECT
+- DOMAIN-SUFFIX,mouseflow.com,REJECT
+- DOMAIN-SUFFIX,a.mouseflow.com,REJECT
+  # > FreshMarketer,REJECT
+- DOMAIN-SUFFIX,freshmarketer.com,REJECT
+  # > Luckyorange,REJECT
+- DOMAIN-SUFFIX,luckyorange.com,REJECT
+- DOMAIN-SUFFIX,luckyorange.net,REJECT
+- DOMAIN-SUFFIX,settings.luckyorange.net,REJECT
+- DOMAIN-SUFFIX,cs.luckyorange.net,REJECT
+- DOMAIN-SUFFIX,upload.luckyorange.net,REJECT
+- DOMAIN-SUFFIX,w1.luckyorange.com,REJECT
+- DOMAIN-SUFFIX,cdn.luckyorange.com,REJECT
+  # > Stats WP Plugin,REJECT
+- DOMAIN-SUFFIX,stats.wp.com,REJECT
+  # >   # > Error Trackers ====================,REJECT
+  # > Bugsnag,REJECT
+- DOMAIN-SUFFIX,notify.bugsnag.com,REJECT
+- DOMAIN-SUFFIX,sessions.bugsnag.com,REJECT
+- DOMAIN-SUFFIX,api.bugsnag.com,REJECT
+- DOMAIN-SUFFIX,app.bugsnag.com,REJECT
+  # > Sentry,REJECT
+- DOMAIN-SUFFIX,browser.sentry-cdn.com,REJECT
+- DOMAIN-SUFFIX,app.getsentry.com,REJECT
+  # >   # > Social ====================,REJECT
+  # > Facebook,REJECT
+- DOMAIN-SUFFIX,pixel.facebook.com,REJECT
+- DOMAIN-SUFFIX,analytics.facebook.com,REJECT
+- DOMAIN-SUFFIX,ads.facebook.com,REJECT
+- DOMAIN-SUFFIX,an.facebook.com,REJECT
+  # > Twitter,REJECT
+- DOMAIN-SUFFIX,ads-api.twitter.com,REJECT
+- DOMAIN-SUFFIX,advertising.twitter.com,REJECT
+- DOMAIN-SUFFIX,ads-twitter.com,REJECT
+- DOMAIN-SUFFIX,static.ads-twitter.com,REJECT
+- DOMAIN-SUFFIX,ads-api.twitter.com,REJECT
+  # > LinkedIn,REJECT
+- DOMAIN-SUFFIX,ads.linkedin.com,REJECT
+- DOMAIN-SUFFIX,analytics.pointdrive.linkedin.com,REJECT
+  # > Pinterest,REJECT
+- DOMAIN-SUFFIX,ads.pinterest.com,REJECT
+- DOMAIN-SUFFIX,log.pinterest.com,REJECT
+- DOMAIN-SUFFIX,ads-dev.pinterest.com,REJECT
+- DOMAIN-SUFFIX,analytics.pinterest.com,REJECT
+- DOMAIN-SUFFIX,trk.pinterest.com,REJECT
+- DOMAIN-SUFFIX,trk2.pinterest.com,REJECT
+- DOMAIN-SUFFIX,widgets.pinterest.com,REJECT
+  # > Reddit,REJECT
+- DOMAIN-SUFFIX,ads.reddit.com,REJECT
+- DOMAIN-SUFFIX,rereddit.com,REJECT
+- DOMAIN-SUFFIX,events.redditmedia.com,REJECT
+- DOMAIN-SUFFIX,d.reddit.com,REJECT
+  # > TikTok,REJECT
+- DOMAIN-SUFFIX,ads-sg.tiktok.com,REJECT
+- DOMAIN-SUFFIX,analytics-sg.tiktok.com,REJECT
+- DOMAIN-SUFFIX,ads.tiktok.com,REJECT
+- DOMAIN-SUFFIX,analytics.tiktok.com,REJECT
+- DOMAIN-SUFFIX,ads-api.tiktok.com,REJECT
+- DOMAIN-SUFFIX,business-api.tiktok.com,REJECT
+- DOMAIN-SUFFIX,log.byteoversea.com,REJECT
+  # > YouTube,REJECT
+- DOMAIN-SUFFIX,ads.youtube.com,REJECT
+- DOMAIN-SUFFIX,youtube.cleverads.vn,REJECT
+- DOMAIN-SUFFIX,ads.youtube.com,REJECT
+  # >   # > Mix ====================,REJECT
+  # >Yahoo,REJECT
+  # >Yandex,REJECT
+  # >   # > OEM ====================,REJECT
+  # > Realme,REJECT
+- DOMAIN-SUFFIX,bdapi-in-ads.realmemobile.com,REJECT
+  # > OPPO,REJECT
+- DOMAIN-SUFFIX,adsfs.oppomobile.com,REJECT
+- DOMAIN-SUFFIX,adx.ads.oppomobile.com,REJECT
+- DOMAIN-SUFFIX,bdapi.ads.oppomobile.com,REJECT
+- DOMAIN-SUFFIX,ck.ads.oppomobile.com,REJECT
+- DOMAIN-SUFFIX,data.ads.oppomobile.com,REJECT
+- DOMAIN-SUFFIX,g1.ads.oppomobile.com,REJECT
+  # > Xiaomi ,REJECT
+- DOMAIN-SUFFIX,api.ad.xiaomi.com,REJECT
+- DOMAIN-SUFFIX,app.chat.xiaomi.net,REJECT
+- DOMAIN-SUFFIX,data.mistat.xiaomi.com,REJECT
+- DOMAIN-SUFFIX,data.mistat.intl.xiaomi.com,REJECT
+- DOMAIN-SUFFIX,data.mistat.india.xiaomi.com,REJECT
+- DOMAIN-SUFFIX,data.mistat.rus.xiaomi.com,REJECT
+- DOMAIN-SUFFIX,sdkconfig.ad.xiaomi.com,REJECT
+- DOMAIN-SUFFIX,sdkconfig.ad.intl.xiaomi.com,REJECT
+- DOMAIN-SUFFIX,globalapi.ad.xiaomi.com,REJECT
+- DOMAIN-SUFFIX,www.cdn.ad.xiaomi.com,REJECT
+- DOMAIN-SUFFIX,tracking.miui.com,REJECT
+- DOMAIN-SUFFIX,sa.api.intl.miui.com,REJECT
+- DOMAIN-SUFFIX,tracking.intl.miui.com,REJECT
+- DOMAIN-SUFFIX,tracking.india.miui.com,REJECT
+- DOMAIN-SUFFIX,tracking.rus.miui.com,REJECT
+- DOMAIN-SUFFIX,iot-eu-logser.realme.com,REJECT
+- DOMAIN-SUFFIX,iot-logser.realme.com,REJECT
+  # > OnePlus,REJECT
+- DOMAIN-SUFFIX,analytics.oneplus.cn,REJECT
+- DOMAIN-SUFFIX,click.oneplus.cn,REJECT
+- DOMAIN-SUFFIX,click.oneplus.com,REJECT
+- DOMAIN-SUFFIX,open.oneplus.net,REJECT
+  # > Huawei,REJECT
+- DOMAIN-SUFFIX,metrics.data.hicloud.com,REJECT
+- DOMAIN-SUFFIX,metrics1.data.hicloud.com,REJECT
+- DOMAIN-SUFFIX,metrics2.data.hicloud.com,REJECT
+- DOMAIN-SUFFIX,metrics3.data.hicloud.com,REJECT
+- DOMAIN-SUFFIX,metrics4.data.hicloud.com,REJECT
+- DOMAIN-SUFFIX,metrics5.data.hicloud.com,REJECT
+- DOMAIN-SUFFIX,logservice.hicloud.com,REJECT
+- DOMAIN-SUFFIX,logservice1.hicloud.com,REJECT
+- DOMAIN-SUFFIX,metrics-dra.dt.hicloud.com,REJECT
+- DOMAIN-SUFFIX,logbak.hicloud.com,REJECT
+- DOMAIN-SUFFIX,grs.hicloud.com,REJECT
+  # > Samsung,REJECT
+- DOMAIN-SUFFIX,samsungapps.com,REJECT
+- DOMAIN-SUFFIX,samsungadhub.com,REJECT
+- DOMAIN-SUFFIX,samsungads.com,REJECT
+- DOMAIN-SUFFIX,smetrics.samsung.com,REJECT
+- DOMAIN-SUFFIX,nmetrics.samsung.com,REJECT
+- DOMAIN-SUFFIX,samsung-com.112.2o7.net,REJECT
+- DOMAIN-SUFFIX,business.samsungusa.com,REJECT
+- DOMAIN-SUFFIX,analytics.samsungknox.com,REJECT
+- DOMAIN-SUFFIX,bigdata.ssp.samsung.com,REJECT
+- DOMAIN-SUFFIX,analytics-api.samsunghealthcn.com,REJECT
+  # > Apple,REJECT
+- DOMAIN-SUFFIX,metrics.apple.com,REJECT
+- DOMAIN-SUFFIX,securemetrics.apple.com,REJECT
+- DOMAIN-SUFFIX,supportmetrics.apple.com,REJECT
+- DOMAIN-SUFFIX,metrics.icloud.com,REJECT
+- DOMAIN-SUFFIX,metrics.mzstatic.com,REJECT
+- DOMAIN-SUFFIX,dzc-metrics.mzstatic.com,REJECT
+- DOMAIN-SUFFIX,books-analytics-events.news.apple-dns.net,REJECT
+- DOMAIN-SUFFIX,books-analytics-events.apple.com,REJECT
+- DOMAIN-SUFFIX,stocks-analytics-events.apple.com,REJECT
+- DOMAIN-SUFFIX,stocks-analytics-events.news.apple-dns.net,REJECT
+- DOMAIN-SUFFIX,*.iadsdk.apple.com,REJECT
+- DOMAIN-SUFFIX,metrics.icloud.com,REJECT
+- DOMAIN-SUFFIX,metrics.apple.com,REJECT
+- DOMAIN-SUFFIX,metrics.mzstatic.com,REJECT
+- DOMAIN-SUFFIX,api-adservices.apple.com,REJECT
+- DOMAIN-SUFFIX,weather-analytics-events.apple.com,REJECT
+- DOMAIN-SUFFIX,notes-analytics-events.apple.com,REJECT
+  # > Unity,REJECT
+- DOMAIN-SUFFIX,auction.unityads.unity3d.com,REJECT
+- DOMAIN-SUFFIX,webview.unityads.unity3d.com,REJECT
+- DOMAIN-SUFFIX,config.unityads.unity3d.com,REJECT
+- DOMAIN-SUFFIX,adserver.unityads.unity3d.com,REJECT
+  # > Yahoo,REJECT
+- DOMAIN-SUFFIX,udc.yahoo.com,REJECT
+- DOMAIN-SUFFIX,udcm.yahoo.com,REJECT
+- DOMAIN-SUFFIX,adtech.yahooinc.com,REJECT
+  # > Unity,REJECT
+- DOMAIN-SUFFIX,appmetrica.yandex.rum,REJECT
+- DOMAIN-SUFFIX,adfstat.yandex.ru,REJECT
+- DOMAIN-SUFFIX,advertising.yandex.ru,REJECT
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Local Area Network
+- IP-CIDR,192.168.0.0/16,DIRECT
+- IP-CIDR,10.0.0.0/8,DIRECT
+- IP-CIDR,172.16.0.0/12,DIRECT
+- IP-CIDR,127.0.0.0/8,DIRECT
+- IP-CIDR,100.64.0.0/10,DIRECT
+
+# DNSPod Public DNS+
+- IP-CIDR,119.28.28.28/32,DIRECT,no-resolve
+
+# GeoIP China
+- GEOIP,CN,DIRECT
+#--------------------------------------
+
+- MATCH,Global✅
+
+#--------------------------------------
+
+
