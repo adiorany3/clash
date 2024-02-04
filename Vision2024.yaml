@@ -1,0 +1,472 @@
+---
+port: 7890
+socks-port: 7891
+redir-port: 7892
+mixed-port: 7893
+mode: rule
+log-level: silent
+unified-delay: true
+allow-lan: true
+external-controller: 0.0.0.0:9090
+bind-address: "*"
+ipv6: false
+dns:
+  enable: true
+  ipv6: false
+  enhanced-mode: redir-host
+  listen: 0.0.0.0:7894
+  fallback-filter:
+    geoip: false
+    ipcidr:
+    - 240.0.0.0/4
+  nameserver:
+  - https://cloudflare-dns.com/dns-query
+  - https://dns.google/dns-query
+  - tls://1.1.1.1:853
+  - tls://8.8.8.8:853
+  fallback:
+  - tcp://1.1.1.1
+  - tcp://8.8.8.8
+  - 1.1.1.1
+  - 8.8.8.8
+tun:
+  enable: true
+  stack: system
+  macOS-auto-route: true
+  macOS-auto-detect-interface: true
+  dns-hijack:
+  - tcp://8.8.8.8:53
+experimental:
+  interface-name: en0
+proxies:
+- name: indoBI_vmess_grpc_tls
+  type: vmess
+  server: 104.18.225.52
+  port: 443
+  uuid: cdfb69aa-f525-42a1-aba7-023936dfb718
+  alterId: 0
+  cipher: auto
+  udp: true
+  xudp: false
+  global-padding: false
+  authenticated-length: false
+  skip-cert-verify: true
+  tls: true
+  servername: sg01.ipv2ray.xyz
+  network: grpc
+  grpc-opts:
+    grpc-service-name: vmess-grpc
+- name: Vless
+  type: vless
+  server: 104.18.225.52
+  port: 443
+  uuid: 8a473970-b357-11ee-859d-1577c1651679
+  udp: true
+  skip-cert-verify: true
+  tls: true
+  servername: sg-vless-ws.bypass.id
+  network: ws
+  ws-opts:
+    path: "/howdy"
+    headers:
+      Host: sg-vless-ws.bypass.id
+- name: indoBI_vmess_ws_tls
+  type: vmess
+  server: 104.18.225.52
+  port: 443
+  uuid: cdfb69aa-f525-42a1-aba7-023936dfb718
+  alterId: 0
+  cipher: auto
+  udp: true
+  xudp: false
+  global-padding: false
+  authenticated-length: false
+  skip-cert-verify: true
+  tls: true
+  servername: sg01.ipv2ray.xyz
+  network: ws
+  ws-opts:
+    path: "/vmess-ws"
+    headers:
+      Host: sg01.ipv2ray.xyz
+- name: awsadioranye_hidessh
+  type: vmess
+  server: 104.18.225.52
+  port: 443
+  uuid: 8ed2773c-0345-4141-be49-4dd6918de88c
+  alterId: 0
+  cipher: auto
+  udp: true
+  xudp: false
+  global-padding: false
+  authenticated-length: false
+  skip-cert-verify: true
+  tls: true
+  servername: sg-gf.webkuy.my.id
+  network: grpc
+  grpc-opts:
+    grpc-service-name: vmess
+- name: telkompayg
+  type: vmess
+  server: 104.18.225.52
+  port: 443
+  uuid: e6f5abdb-7f1f-4592-a0d4-675a1f318468
+  alterId: 0
+  cipher: auto
+  udp: true
+  xudp: true
+  global-padding: false
+  authenticated-length: false
+  skip-cert-verify: true
+  tls: true
+  servername: telkom1.myserver-prem.cloud
+  network: grpc
+  grpc-opts:
+    grpc-service-name: vmess
+- name: XMBB
+  type: trojan
+  server: 104.18.225.52
+  port: 443
+  password: e1cf9850-a9f9-11ee-9861-1577c1651679
+  udp: true
+  sni: sg.xmbb.net
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: "/welcome"
+    headers:
+      Host: sg.xmbb.net
+- name: 5.lowh.net
+  type: vmess
+  server: 104.18.225.52
+  port: 443
+  uuid: 5150fa20-ad78-11ee-99ec-1577c1651679
+  alterId: 0
+  cipher: auto
+  udp: true
+  xudp: false
+  global-padding: false
+  authenticated-length: false
+  skip-cert-verify: true
+  tls: true
+  servername: 5.lowh.net
+  network: ws
+  ws-opts:
+    path: "/hello"
+    headers:
+      Host: 5.lowh.net
+- name: Biznet
+  type: trojan
+  server: 104.18.225.52
+  port: 443
+  password: 58d8eaf0-adba-11ee-a759-1577c1651679
+  udp: true
+  sni: 11.lowh.net
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: "/welcome"
+    headers:
+      Host: 11.lowh.net
+- name: 10.lowh.net
+  type: vmess
+  server: 104.18.225.52
+  port: 443
+  uuid: 79883570-a9fc-11ee-a4fd-1577c1651679
+  alterId: 0
+  cipher: auto
+  udp: true
+  xudp: true
+  global-padding: false
+  authenticated-length: false
+  skip-cert-verify: true
+  tls: true
+  servername: 10.lowh.net
+  network: ws
+  ws-opts:
+    path: "/hello"
+    headers:
+      Host: 10.lowh.net
+- name: 12.lowh.net
+  type: vmess
+  server: 104.18.225.52
+  port: 443
+  uuid: dda0e6c0-6579-11ee-acbc-1577c1651679
+  alterId: 0
+  cipher: auto
+  udp: true
+  xudp: true
+  global-padding: false
+  authenticated-length: false
+  skip-cert-verify: true
+  tls: true
+  servername: 12.lowh.net
+  network: ws
+  ws-opts:
+    path: "/files"
+    headers:
+      Host: 12.lowh.net
+- name: 2.lowh.net
+  type: vmess
+  server: 104.18.225.52
+  port: 443
+  uuid: c41a8fc0-a9fc-11ee-a463-1577c1651679
+  alterId: 0
+  cipher: auto
+  udp: true
+  xudp: true
+  global-padding: false
+  authenticated-length: false
+  skip-cert-verify: true
+  tls: true
+  servername: 2.lowh.net
+  network: ws
+  ws-opts:
+    path: "/hello"
+    headers:
+      Host: 2.lowh.net
+- name: 6.lowh.net
+  type: vmess
+  server: 104.18.225.52
+  port: 443
+  uuid: 947c3310-a9fb-11ee-8c7f-1577c1651679
+  alterId: 0
+  cipher: auto
+  udp: true
+  xudp: true
+  global-padding: false
+  authenticated-length: false
+  skip-cert-verify: true
+  tls: true
+  servername: 2.htmlcdn.net
+  network: ws
+  ws-opts:
+    path: "/hello"
+    headers:
+      Host: 2.htmlcdn.net
+- name: 5.lowh.neted
+  type: vmess
+  server: 104.18.225.52
+  port: 443
+  uuid: 5150fa20-ad78-11ee-99ec-1577c1651679
+  alterId: 0
+  cipher: auto
+  udp: true
+  xudp: false
+  global-padding: false
+  authenticated-length: false
+  skip-cert-verify: true
+  tls: true
+  servername: 5.lowh.net
+  network: ws
+  ws-opts:
+    path: "/hello"
+    headers:
+      Host: 5.lowh.net
+- name: Bizneted
+  type: trojan
+  server: 104.18.225.52
+  port: 443
+  password: 58d8eaf0-adba-11ee-a759-1577c1651679
+  udp: true
+  sni: 11.lowh.net
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: "/welcome"
+    headers:
+      Host: 11.lowh.net
+- name: 10.lowh.neted
+  type: vmess
+  server: 104.18.225.52
+  port: 443
+  uuid: 79883570-a9fc-11ee-a4fd-1577c1651679
+  alterId: 0
+  cipher: auto
+  udp: true
+  xudp: true
+  global-padding: false
+  authenticated-length: false
+  skip-cert-verify: true
+  tls: true
+  servername: 10.lowh.net
+  network: ws
+  ws-opts:
+    path: "/hello"
+    headers:
+      Host: 10.lowh.net
+- name: XMBBed
+  type: trojan
+  server: 104.18.225.52
+  port: 443
+  password: 13fb6b40-7315-11ee-a7b2-1577c1651679
+  udp: true
+  sni: 13.lowh.net
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: "/howdy"
+    headers:
+      Host: 13.lowh.net
+- name: 2.lowh.neted
+  type: vmess
+  server: 104.18.225.52
+  port: 443
+  uuid: c41a8fc0-a9fc-11ee-a463-1577c1651679
+  alterId: 0
+  cipher: auto
+  udp: true
+  xudp: true
+  global-padding: false
+  authenticated-length: false
+  skip-cert-verify: true
+  tls: true
+  servername: 2.lowh.net
+  network: ws
+  ws-opts:
+    path: "/hello"
+    headers:
+      Host: 2.lowh.net
+- name: 6.lowh.neted
+  type: vmess
+  server: 104.18.225.52
+  port: 443
+  uuid: 947c3310-a9fb-11ee-8c7f-1577c1651679
+  alterId: 0
+  cipher: auto
+  udp: true
+  xudp: true
+  global-padding: false
+  authenticated-length: false
+  skip-cert-verify: true
+  tls: true
+  servername: 2.htmlcdn.net
+  network: ws
+  ws-opts:
+    path: "/hello"
+    headers:
+      Host: 2.htmlcdn.net
+- name: telkom
+  type: vmess
+  server: 104.18.225.52
+  port: 443
+  uuid: e6f5abdb-7f1f-4592-a0d4-675a1f318468
+  alterId: 0
+  cipher: auto
+  udp: true
+  xudp: true
+  global-padding: false
+  authenticated-length: false
+  skip-cert-verify: true
+  tls: true
+  servername: telkom1.myserver-prem.cloud
+  network: ws
+  ws-opts:
+    path: "/vmess"
+    headers:
+      Host: telkom1.myserver-prem.cloud
+- name: vultrku
+  type: vmess
+  server: 104.18.225.52
+  port: 443
+  uuid: bff3e8d3-0af2-4880-ad94-a88e4d7730d1
+  alterId: 0
+  cipher: auto
+  udp: true
+  xudp: false
+  global-padding: false
+  authenticated-length: false
+  skip-cert-verify: true
+  tls: true
+  servername: sg1-vultr.myserver-prem.cloud
+  network: ws
+  ws-opts:
+    path: "/vmess"
+    headers:
+      Host: sg1-vultr.myserver-prem.cloud
+- name: USA
+  type: trojan
+  server: 104.18.225.52
+  port: 443
+  password: 44a01990-ad6a-11ee-bf78-1577c1651679
+  udp: true
+  sni: 3.lowh.net
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: "/welcome"
+    headers:
+      Host: 3.lowh.net
+- name: 1.lowh.net
+  type: trojan
+  server: 104.18.225.52
+  port: 443
+  password: e2277c50-adb9-11ee-ab98-1577c1651679
+  udp: true
+  sni: 1.lowh.net
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: "/welcome"
+    headers:
+      Host: 1.lowh.net
+proxy-groups:
+- name: sshkit-generator
+  type: url-test
+  disable-udp: false
+  proxies:
+  - indoBI_vmess_grpc_tls
+  - Vless
+  - indoBI_vmess_ws_tls
+  - awsadioranye_hidessh
+  - telkompayg
+  - XMBB
+  - 5.lowh.net
+  - Biznet
+  - 10.lowh.net
+  - 12.lowh.net
+  - 2.lowh.net
+  - 6.lowh.net
+  - 5.lowh.neted
+  - Bizneted
+  - 10.lowh.neted
+  - XMBBed
+  - 2.lowh.neted
+  - 6.lowh.neted
+  - telkom
+  - vultrku
+  - USA
+  - 1.lowh.net
+  url: http://www.gstatic.com/generate_204
+  interval: '300'
+  tolerance: '150'
+- name: ID
+  type: fallback
+  disable-udp: false
+  proxies:
+  - indoBI_vmess_grpc_tls
+  - Vless
+  - indoBI_vmess_ws_tls
+  - awsadioranye_hidessh
+  - telkompayg
+  - XMBB
+  - 5.lowh.net
+  - Biznet
+  - 10.lowh.net
+  - 12.lowh.net
+  - 2.lowh.net
+  - 6.lowh.net
+  - 5.lowh.neted
+  - Bizneted
+  - 10.lowh.neted
+  - XMBBed
+  - 2.lowh.neted
+  - 6.lowh.neted
+  - telkom
+  - vultrku
+  - USA
+  - 1.lowh.net
+  url: http://www.gstatic.com/generate_204
+  interval: '300'
+rules:
+- MATCH,sshkit-generator
