@@ -40,7 +40,7 @@ proxies:
   servername: cbtp.xmbb.net
   network: ws
   ws-opts:
-    path: "/hello"
+    path: "/worryfree"
     headers:
       Host: cbtp.xmbb.net
 - name: tambah
