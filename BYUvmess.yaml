@@ -24,6 +24,25 @@ hosts:
 #🔴_____________________________________proxies______________________________________🔴
 #🔴
 proxies:
+- name: biznet
+  type: vmess
+  server: 104.19.143.108
+  port: 80
+  uuid: 8a878d30-c37b-11ee-bee6-1577c1651679
+  alterId: 0
+  cipher: auto
+  udp: true
+  xudp: false
+  global-padding: false
+  authenticated-length: false
+  skip-cert-verify: true
+  tls: false
+  servername: cbtp.xmbb.net
+  network: ws
+  ws-opts:
+    path: "/hello"
+    headers:
+      Host: cbtp.xmbb.net
 - name: tambah
   type: vmess
   server: 104.19.143.108
@@ -168,6 +187,7 @@ proxy-groups:
   type: select
   disable-udp: false
   proxies:
+  - biznet
   - tambah
   - baru
   - oracle
@@ -182,6 +202,7 @@ proxy-groups:
   strategy: consistent-hashing
   disable-udp: false
   proxies:
+  - biznet
   - tambah
   - baru
   - oracle
@@ -198,6 +219,7 @@ proxy-groups:
   type: fallback
   disable-udp: false
   proxies:
+  - biznet
   - tambah
   - baru
   - oracle
