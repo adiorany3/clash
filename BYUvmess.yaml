@@ -28,7 +28,7 @@ proxies:
   type: vmess
   server: 104.19.143.108
   port: 80
-  uuid: 8a878d30-c37b-11ee-bee6-1577c1651679
+  uuid: ed7e5110-c383-11ee-9bf4-1577c1651679
   alterId: 0
   cipher: auto
   udp: true
@@ -37,12 +37,12 @@ proxies:
   authenticated-length: false
   skip-cert-verify: true
   tls: false
-  servername: cbtp.xmbb.net
+  servername: sg.htmlcdn.net
   network: ws
   ws-opts:
     path: "/worryfree"
     headers:
-      Host: cbtp.xmbb.net
+      Host: sg.htmlcdn.net
 - name: tambah
   type: vmess
   server: 104.19.143.108
