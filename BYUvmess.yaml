@@ -47,7 +47,7 @@ proxies:
   type: vmess
   server: 104.19.143.108
   port: 80
-  uuid: aaf1e0a7-5616-4e67-bb4b-c706b8a32b01
+  uuid: 6101f6c5-86a2-46d1-a0b0-3dafdf2a8535
   alterId: 0
   cipher: auto
   udp: true
@@ -56,12 +56,12 @@ proxies:
   authenticated-length: false
   skip-cert-verify: true
   tls: false
-  servername: bilibili.com
+  servername: dk1.xv2ray.net
   network: ws
   ws-opts:
-    path: "/?ed=2048"
+    path: "/vmess"
     headers:
-      Host: bilibili.com
+      Host: dk1.xv2ray.net
 - name: baru
   type: vmess
   server: 104.19.143.108
