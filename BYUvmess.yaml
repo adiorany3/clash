@@ -47,7 +47,7 @@ proxies:
   type: vmess
   server: 104.19.143.108
   port: 80
-  uuid: 6101f6c5-86a2-46d1-a0b0-3dafdf2a8535
+  uuid: 113a74cc-f13b-48ec-bbb2-2bbab77a2f35
   alterId: 0
   cipher: auto
   udp: true
@@ -56,12 +56,12 @@ proxies:
   authenticated-length: false
   skip-cert-verify: true
   tls: false
-  servername: dk1.xv2ray.net
+  servername: kr1.ljyyds.top
   network: ws
   ws-opts:
-    path: "/vmess"
+    path: "/"
     headers:
-      Host: dk1.xv2ray.net
+      Host: kr1.ljyyds.top
 - name: baru
   type: vmess
   server: 104.19.143.108
