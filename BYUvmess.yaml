@@ -123,7 +123,7 @@ proxies:
   type: vmess
   server: 104.19.143.108
   port: 80
-  uuid: e778fdab-34ca-4ba2-a51f-f757d8ae1aa9
+  uuid: 617c9bc4-4116-41c6-99e0-ace49a38fcdb
   alterId: 0
   cipher: auto
   udp: true
@@ -132,12 +132,12 @@ proxies:
   authenticated-length: false
   skip-cert-verify: true
   tls: false
-  servername: vless.adioranye.workers.dev
+  servername: fr9.tehme100.fun
   network: ws
   ws-opts:
-    path: "/ovh.kmoljklj.top:443/0TxtG?ed=2048"
+    path: "/Jnv8ViZOUVgijjOh0p5uGjHnXIiY"
     headers:
-      Host: vless.adioranye.workers.dev
+      Host: fr9.tehme100.fun
 - name: indoBI_vmess_ws_tls
   type: vmess
   server: 104.19.143.108
