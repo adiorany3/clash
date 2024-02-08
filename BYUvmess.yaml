@@ -123,7 +123,7 @@ proxies:
   type: vmess
   server: 104.19.143.108
   port: 80
-  uuid: 617c9bc4-4116-41c6-99e0-ace49a38fcdb
+  uuid: 7022982f-da4c-48c9-c660-b2315abdcf7e
   alterId: 0
   cipher: auto
   udp: true
@@ -132,12 +132,12 @@ proxies:
   authenticated-length: false
   skip-cert-verify: true
   tls: false
-  servername: fr9.tehme100.fun
+  servername: my1.tooters.ir
   network: ws
   ws-opts:
-    path: "/Jnv8ViZOUVgijjOh0p5uGjHnXIiY"
+    path: "/?ed=2048"
     headers:
-      Host: fr9.tehme100.fun
+      Host: my1.tooters.ir
 - name: indoBI_vmess_ws_tls
   type: vmess
   server: 104.19.143.108
