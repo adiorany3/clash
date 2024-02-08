@@ -119,7 +119,7 @@ proxies:
     path: "/v1893298323Py"
     headers:
       Host: de1e-haha.v2freevpn.com
-- name: dapat
+- name: Hetzner
   type: vmess
   server: 104.19.143.108
   port: 80
@@ -192,7 +192,7 @@ proxy-groups:
   - baru
   - oracle
   - akamai
-  - dapat
+  - Hetzner
   - indoBI_vmess_ws_tls
   - Biz
 #⬜⬜
@@ -207,7 +207,7 @@ proxy-groups:
   - baru
   - oracle
   - akamai
-  - dapat
+  - Hetzner
   - indoBI_vmess_ws_tls
   - Biz
   url: http://www.gstatic.com/generate_204
@@ -224,7 +224,7 @@ proxy-groups:
   - baru
   - oracle
   - akamai
-  - dapat
+  - Hetzner
   - indoBI_vmess_ws_tls
   - Biz
   url: http://www.gstatic.com/generate_204
