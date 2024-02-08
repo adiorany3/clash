@@ -66,7 +66,7 @@ proxies:
   type: vmess
   server: 104.19.143.108
   port: 80
-  uuid: 7022982f-da4c-48c9-c660-b2315abdcf7e
+  uuid: ae056da6-d893-4f06-94f5-1876a6a76fcf
   alterId: 0
   cipher: auto
   udp: true
@@ -75,12 +75,12 @@ proxies:
   authenticated-length: false
   skip-cert-verify: true
   tls: false
-  servername: my1.tooters.ir
+  servername: mianfei-uk-0001.bpjc.site
   network: ws
   ws-opts:
-    path: "/"
+    path: "/?ed"
     headers:
-      Host: my1.tooters.ir
+      Host: mianfei-uk-0001.bpjc.site
 - name: oracle
   type: vmess
   server: 104.19.143.108
