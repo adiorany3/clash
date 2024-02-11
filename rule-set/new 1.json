@@ -1,0 +1,57 @@
+{
+  "rules": [
+    {
+      "domain": [
+        "test.com"
+      ],
+      "domain_suffix": [
+        ".com"
+      ],
+      "domain_keyword": [
+        "test"
+      ],
+      "domain_regex": [
+        "^stun\\..+"
+		".+\\.awsdns-[0-9][a-z]\\.co\\.uk$",
+      ],
+      "source_ip_cidr": [
+        "10.0.0.0/24",
+        "192.168.1.197"
+      ],
+      "ip_cidr": [
+        "10.0.0.0/24",
+        "192.168.0.1"
+      ],
+      "source_port": [
+        12345
+      ],
+      "source_port_range": [
+        "1000:2000",
+        ":3000",
+        "4000:"
+      ],
+      "port": [
+        80,
+        443
+      ],
+      "port_range": [
+        "1000:2000",
+        ":3000",
+        "4000:"
+      ],
+      "process_name": [
+        "curl"
+      ],
+      "process_path": [
+        "/usr/bin/curl"
+      ],
+      "invert": false
+    },
+    {
+      "type": "logical",
+      "mode": "and",
+      "rules": [],
+      "invert": false
+    }
+  ]
+}
