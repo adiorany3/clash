@@ -180,15 +180,15 @@ proxies:
   type: trojan
   server: 104.19.143.108
   port: 80
-  password: f0aa34d0-cd5f-11ee-8172-1577c1651679
+  password: 792d84e0-cd9c-11ee-88cb-1577c1651679
   udp: true
-  sni: 11.lowh.net
+  sni: sg.xmbb.net
   skip-cert-verify: true
   network: ws
   ws-opts:
     path: "/worryfree"
     headers:
-      Host: 11.lowh.net
+      Host: sg.xmbb.net
 
 #🔴
 #🔴_____________________________________proxies______________________________________🔴
