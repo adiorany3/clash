@@ -177,19 +177,24 @@ proxies:
     headers:
       Host: cbtp.xmbb.net
 - name: Indo
-  server: sg-dtc.webkuy.my.id
-  port: 443
-  type: trojan
-  password: a91eb7d7-e8a8-4834-9c60-d2a0aa94aa12
+  type: vmess
+  server: 104.19.143.108
+  port: 80
+  uuid: 8ed2773c-0345-4141-be49-4dd6918de88c
+  alterId: 0
+  cipher: auto
+  udp: true
+  xudp: false
+  global-padding: false
+  authenticated-length: false
   skip-cert-verify: true
-  sni: sg-dtc.webkuy.my.id
+  tls: false
+  servername: sg-gf.webkuy.my.id
   network: ws
   ws-opts:
-    path: /trojan
+    path: "/vmess"
     headers:
-      Host: sg-dtc.webkuy.my.id
-  udp: true
-
+      Host: sg-gf.webkuy.my.id
 #🔴
 #🔴_____________________________________proxies______________________________________🔴
 #
