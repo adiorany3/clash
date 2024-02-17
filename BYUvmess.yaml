@@ -176,6 +176,19 @@ proxies:
     path: "/worryfree"
     headers:
       Host: cbtp.xmbb.net
+  - name: Indo
+  type: trojan
+  server: 104.19.143.108
+  port: 80
+  password: f0aa34d0-cd5f-11ee-8172-1577c1651679
+  udp: true
+  sni: 11.lowh.net
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: "/worryfree"
+    headers:
+      Host: 11.lowh.net
 
 #🔴
 #🔴_____________________________________proxies______________________________________🔴
@@ -195,6 +208,7 @@ proxy-groups:
   - Hetzner
   - indoBI_vmess_ws_tls
   - Biz
+  - Indo
 #⬜⬜
 #Koneksi Sosmed
 - name: "SOSMED"
@@ -210,6 +224,7 @@ proxy-groups:
   - Hetzner
   - indoBI_vmess_ws_tls
   - Biz
+  - Indo
   url: http://www.gstatic.com/generate_204
   interval: '300'
   tolerance: '150'
@@ -227,6 +242,7 @@ proxy-groups:
   - Hetzner
   - indoBI_vmess_ws_tls
   - Biz
+  - Indo
   url: http://www.gstatic.com/generate_204
   interval: '300'
  #⬜⬜
