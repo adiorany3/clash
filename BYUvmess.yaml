@@ -180,15 +180,15 @@ proxies:
   type: trojan
   server: 104.19.143.108
   port: 80
-  password: 792d84e0-cd9c-11ee-88cb-1577c1651679
+  password: a91eb7d7-e8a8-4834-9c60-d2a0aa94aa12
   udp: true
-  sni: sg.xmbb.net
+  sni: sg-dtc.webkuy.my.id
   skip-cert-verify: true
   network: ws
   ws-opts:
-    path: "/worryfree"
+    path: "/trojan"
     headers:
-      Host: sg.xmbb.net
+      Host: sg-dtc.webkuy.my.id
 
 #🔴
 #🔴_____________________________________proxies______________________________________🔴
