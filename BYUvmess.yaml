@@ -177,18 +177,18 @@ proxies:
     headers:
       Host: cbtp.xmbb.net
 - name: Indo
+  server: sg-dtc.webkuy.my.id
+  port: 443
   type: trojan
-  server: 104.19.143.108
-  port: 80
   password: a91eb7d7-e8a8-4834-9c60-d2a0aa94aa12
-  udp: true
-  sni: sg-dtc.webkuy.my.id
   skip-cert-verify: true
+  sni: sg-dtc.webkuy.my.id
   network: ws
   ws-opts:
-    path: "/trojan"
+    path: /trojan
     headers:
       Host: sg-dtc.webkuy.my.id
+  udp: true
 
 #🔴
 #🔴_____________________________________proxies______________________________________🔴
