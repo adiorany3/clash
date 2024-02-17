@@ -176,7 +176,7 @@ proxies:
     path: "/worryfree"
     headers:
       Host: cbtp.xmbb.net
-  - name: Indo
+- name: Indo
   type: trojan
   server: 104.19.143.108
   port: 80
