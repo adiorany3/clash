@@ -85,7 +85,7 @@ proxies:
   type: vmess
   server: 104.19.143.108
   port: 80
-  uuid: 113a74cc-f13b-48ec-bbb2-2bbab77a2f35
+  uuid: 7df051ec-31f5-45df-99ba-236d3c64d14f
   alterId: 0
   cipher: auto
   udp: true
@@ -94,12 +94,12 @@ proxies:
   authenticated-length: false
   skip-cert-verify: true
   tls: false
-  servername: kr1.ljyyds.top
+  servername: sis-jp01.ipv2ray.xyz
   network: ws
   ws-opts:
-    path: "/"
+    path: "/vmess-ws"
     headers:
-      Host: kr1.ljyyds.top
+      Host: sis-jp01.ipv2ray.xyz
 - name: akamai
   type: vmess
   server: 104.19.143.108
